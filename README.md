@@ -1,0 +1,14 @@
+目录
+- [src] 项目源码目录
+  - [controllers] 控制器目录
+  - [database] 数据库连接层
+  - [middlewares] 中间件目录
+  - [models] 模型目录
+  - [routes] 路由目录
+  - [services] 服务目录
+  - [main.rs] 项目入口文件
+  - [comfig.rs] 项目配置项
+- [target] 项目编译输出目录
+- [README.md] 项目说明文档
+- [Cargo.lock] 依赖管理文件
+- [Cargo.toml] 项目配置文件
