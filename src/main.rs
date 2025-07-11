@@ -1,5 +1,6 @@
 // 依赖
 use axum;
+
 //框架
 mod controllers;
 mod database;
@@ -10,15 +11,16 @@ mod services;
 mod models;
 // 配置
 mod config;
+//工具
+mod utils;
 
 #[tokio::main]
 async fn main() {
     let _config = config::get_config();
-    // build our application with a single route
     let app = routes::create_router();
 
-    println!("服务启动成功,地址：http://{}:{}", _config.host, _config.port);
-    println!("服务版本为：{}", _config.version);
+    //打印基础信息
+    utils::log::println_basic_info(&_config);
 
     let listener = tokio::net::TcpListener::bind(format!("{}:{}", _config.host, _config.port))
         .await

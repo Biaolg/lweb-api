@@ -13,3 +13,6 @@ jsonc-parser = { version = "0.26.2", features = ["serde"] }
 
 #数据库
 sea-orm = "1.1.12"
+
+#工具
+colored = "*"
