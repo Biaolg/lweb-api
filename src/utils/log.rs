@@ -1,4 +1,4 @@
-use crate::models::app_config;
+use crate::models::app;
 
 use colored::*;
 use once_cell::sync::Lazy;
@@ -74,7 +74,7 @@ macro_rules! log_error {
 }
 
 //打印基础信息
-pub fn println_basic_info(_config: &app_config::Config) {
+pub fn println_basic_info(_config: &app::Config) {
     println!("");
     logline!(
         "{}",
@@ -83,6 +83,9 @@ pub fn println_basic_info(_config: &app_config::Config) {
             .bold()
     );
     logline!("{}{}", "版本：".dimmed(), _config.version.cyan());
+    // for db in &_config.databases {
+    //     logline!("{}{}", "数据库：".dimmed(), db.key.cyan());
+    // }
     logline!(
         "{}{}",
         "地址：".dimmed(),

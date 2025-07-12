@@ -3,7 +3,7 @@ use colored::*;
 use std::time::Instant;
 
 // 接口日志中间件
-pub async fn console_log(req: Request<Body>, next: Next) -> Response {
+pub async fn request_log(req: Request<Body>, next: Next) -> Response {
     let start = Instant::now();
 
     let method_type = if req.method() == "GET" {
