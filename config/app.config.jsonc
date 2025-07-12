@@ -2,5 +2,15 @@
     "version": "1.0.0",
     "host": "127.0.0.1",
     "port": 8000,
-    "databases": [],
+    "databases": [
+        {
+            "key": "LWEB",
+            "database_type": "pg",
+            "host": "localhost",
+            "port": 5432,
+            "username": "postgres",
+            "password": "long135360",
+            "database": "LWEB"
+        }
+    ],
 }

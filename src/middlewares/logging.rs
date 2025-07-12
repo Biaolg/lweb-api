@@ -2,7 +2,7 @@ use axum::{body::Body, http::Request, middleware::Next, response::Response};
 use colored::*;
 use std::time::Instant;
 
-// 最简单的控制台日志
+// 接口日志中间件
 pub async fn console_log(req: Request<Body>, next: Next) -> Response {
     let start = Instant::now();
 

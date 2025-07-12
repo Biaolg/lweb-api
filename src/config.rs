@@ -5,7 +5,8 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use crate::models::config::Config;
+use crate::log_error;
+use crate::models::app_config::Config;
 
 fn load_config<P: AsRef<Path>>(path: P) -> Result<Config, Box<dyn std::error::Error>> {
     let content = fs::read_to_string(path)?;
@@ -34,13 +35,13 @@ pub fn get_config() -> Config {
 
     // 将相对路径转为绝对路径（如果失败就 fallback 用原路径）
     let abs_path: PathBuf = fs::canonicalize(rel_path).unwrap_or_else(|err| {
-        eprintln!("警告：无法转换为绝对路径，原因：{}\n使用相对路径继续：{}", err, rel_path);
+        log_error!("警告：无法转换为绝对路径，原因：{}\n使用相对路径继续：{}", err, rel_path);
         PathBuf::from(rel_path)
     });
 
     load_config(&abs_path).unwrap_or_else(|err| {
-        eprintln!("配置加载失败: {}", err);
-        eprintln!("尝试加载的路径: {}", abs_path.display());
+        log_error!("配置加载失败: {}", err);
+        log_error!("尝试加载的路径: {}", abs_path.display());
         std::process::exit(1);
     })
 }
